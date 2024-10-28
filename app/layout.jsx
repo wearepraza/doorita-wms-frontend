@@ -1,3 +1,6 @@
+// stylse
+import '@/public/styles/globals.scss'
+
 export const metadata = {
   title: "مدیریت انبار دوریتا",
 };
