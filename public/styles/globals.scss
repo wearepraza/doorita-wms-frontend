@@ -1,2 +1,57 @@
 // variables
 @import '../styles/variables.scss';
+
+// fonts
+@font-face {
+    font-family: vazirmatn-light;
+    src: url('../assets/fonts/vazirmatn-light.woff2');
+}
+
+@font-face {
+    font-family: vazirmatn-regular;
+    src: url('../assets/fonts/vazirmatn-regular.woff2');
+}
+
+@font-face {
+    font-family: vazirmatn-bold;
+    src: url('../assets/fonts/vazirmatn-bold.woff2');
+}
+
+// globals
+* {
+    margin: 0;
+    padding: 0;
+    background-color: $backgroundColor;
+    font-family: vazirmatn-regular;
+}
+
+// elements
+input {
+    width: 100%;
+    height: 35px;
+    border: 1px solid #ddd;
+    border-radius: $childRadius;
+    outline: none;
+}
+
+label {
+    background-color: rgba($color: #000000, $alpha: 0);
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.primaryButton {
+    background-color: $primaryColor;
+    color: white;
+    border: none;
+    border-radius: $childRadius;
+    padding: 5px 10px;
+    width: 100%;
+    height: 50px;
+    transition: 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $primaryColorHover;
+    }
+}

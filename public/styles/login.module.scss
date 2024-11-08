@@ -1,0 +1,26 @@
+// variables
+@import '../styles/variables.scss';
+
+.loginFormContainer {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .loginForm {
+        padding: 25px;
+        border: none;
+        border-radius: $parentRadius;
+        width: 350px;
+        background-color: white;
+
+        label {
+            color: $titleColor;
+        }
+
+        input {
+            margin-bottom: 15px;
+        }
+    }
+}
