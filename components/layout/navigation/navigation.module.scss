@@ -1,0 +1,24 @@
+// variables
+@import '../../../public/styles/variables.scss';
+
+.navigation {
+    width: 100%;
+    padding: 15px 50px;
+    background-color: white; 
+    position: absolute;
+    bottom: 0; 
+
+    ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .scanlink {
+            padding: 15px;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            background-color: $primaryColor;
+        }
+    }
+}

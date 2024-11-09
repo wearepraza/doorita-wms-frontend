@@ -1,3 +1,8 @@
+// tailwind
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 // variables
 @import '../styles/variables.scss';
 
@@ -21,14 +26,17 @@
 * {
     margin: 0;
     padding: 0;
-    background-color: $backgroundColor;
     font-family: vazirmatn-regular;
+}
+
+body {
+    background-color: $backgroundColor;
 }
 
 // elements
 input {
     width: 100%;
-    height: 35px;
+    height: 45px;
     border: 1px solid #ddd;
     border-radius: $childRadius;
     outline: none;

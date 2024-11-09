@@ -10,7 +10,7 @@ import logo from '@/public/assets/images/logo.svg'
 export default function Login() {
     return (
         <div className={styles.loginFormContainer}>
-            <Image src={logo} width={100} height={100} />
+            <Image src={logo} width={75} height={75} />
             <form className={`${styles.loginForm} shadow`}>
                 <label htmlFor="username">نام کاربری</label>
                 <input type="text" id="username" placeholder='نام کاربری خود را وارد کنید' />
