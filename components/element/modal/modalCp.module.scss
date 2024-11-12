@@ -1,0 +1,42 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(12, 13, 15, 0.8);
+    z-index: 1000;
+}
+
+.modalStyles {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: center;
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 80vh;  /* حداکثر ارتفاع 80% */
+    overflow: scroll;    /* فعال‌سازی اسکرول */
+    scrollbar-width: none;
+
+    @media (max-width: 768px) {
+        max-width: 80%; /* عرض حداکثری 90% برای تبلت */
+    }
+
+    @media (max-width: 480px) {
+        max-width: 90%; /* عرض حداکثری 95% برای موبایل */
+        padding: 15px; /* کاهش حاشیه‌ها در موبایل */
+        overflow-x: auto;
+    }
+}
+
+

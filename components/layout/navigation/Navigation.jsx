@@ -10,7 +10,7 @@ export default function Navigation() {
         <nav className={`${styles.navigation} shadow`}>
             <ul>
                 <li>
-                    <Link href='#'>
+                    <Link href='/dashboard/admin/users'>
                         <LuUser size={24} />
                     </Link>
                 </li>

@@ -1,0 +1,30 @@
+.dropdown {
+    width: 60px;
+    padding:8px 8px 0;
+    text-align: center;
+    font-size: 12px;
+    border: none;
+    border-bottom: 4px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    appearance: none;
+    transition: all .2s ease-in-out;
+ 
+    &:focus {
+        border-color: #DCDEE3;
+        outline: none;
+    }
+    
+    &:hover {
+        background-color: #DCDEE3;
+        transition: all .2s ease-in-out;
+    }
+    option:focus{
+        background:transparent !important;
+        
+    }
+  
+}

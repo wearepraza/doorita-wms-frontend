@@ -1,0 +1,103 @@
+.tableContainer {
+  width: 100%;
+  max-width: 100%; // اطمینان از اینکه کانتینر جدول به اندازه کامل صفحه باشد
+  overflow-x: auto; // اضافه کردن اسکرول افقی برای کانتینر
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
+
+  table {
+    width: 100%;
+    min-width: 600px; // اطمینان از اینکه جدول در عرض کم‌تر از این مقدار شکسته نشود
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+  }
+
+  thead {
+    background-color: #f3f4f6;
+  }
+
+  th,
+  td {
+    padding: 12px 15px;
+    text-align: right;
+    border-bottom: 1px solid #DCDEE3;
+  }
+
+  th:first-child,
+  td:first-child {
+    width: 40px;
+    text-align: center;
+  }
+
+  th {
+    font-weight: 600;
+  }
+}
+
+
+.status {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.statusPublished {
+  background-color: #e1f5e6;
+  color: #4caf50;
+}
+
+.statusDraft {
+  background-color: #f3f4f6;
+  color: #9e9e9e;
+}
+
+.statusLowStock {
+  background-color: #fff3e0;
+  color: #ffa000;
+}
+
+.statusOutOfStock {
+  background-color: #ffebee;
+  color: #f44336;
+}
+
+.statusBlocked {
+  background-color: #ffebee;
+  color: #f44336;
+}
+
+.statusActive {
+  background-color: #e1f5e6;
+  color: #4caf50;
+}
+
+.statusProcessing {
+  background-color: #fff3e0;
+  color: #ffa000;
+}
+
+.statusShipped {
+  color: teal;
+  background-color: #e0f7fa;
+}
+
+.statusDelivered {
+  background-color: #e1f5e6;
+  color: #4caf50;
+}
+
+.statusCancelled {
+  background-color: #ffebee;
+  color: #f44336;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: start;
+  width: 100%;
+}
+
