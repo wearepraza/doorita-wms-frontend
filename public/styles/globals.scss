@@ -49,6 +49,24 @@ label {
     margin-bottom: 5px;
 }
 
+.btn {
+    height: 50px;
+    border: none;
+    border-radius: $childRadius;
+    padding: 5px 10px;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background-color: $primaryColor;
+    color: white;
+    
+    &:hover {
+        background-color: $primaryColorHover;
+    }
+}
+
 .primaryButton {
     background-color: $primaryColor;
     color: white;

@@ -1,0 +1,47 @@
+@import "@/public/styles/variables.scss";
+
+.selectBoxContainer {
+  margin: 10px 0;
+  position: relative;
+
+  .label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #727A90;
+    text-wrap: nowrap; //added
+  }
+
+  .selectBox {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+
+    .icon {
+      position:absolute;
+      left: 10px;
+      top: 30%;
+      color: #727A90;
+    }
+  }
+
+  .selectBox select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #727A90;
+    border-radius: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-size: 12px;
+    cursor: pointer;
+    color: #727A90;
+
+
+
+  }
+
+
+}
