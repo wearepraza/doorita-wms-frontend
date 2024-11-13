@@ -1,13 +1,13 @@
 // variables
 @import '../styles/variables.scss';
 
-.inputRow{
+.inputRow {
     display: flex;
     flex-direction: column;
     align-items: start;
 
     label {
-        text-align: right !important;
+        text-align: right; // Removed `!important`
     }
 
     input {
@@ -23,41 +23,58 @@
     width: 100%;
     gap: 50px;
 
-    .cancel {
-      margin-right: 10px;
+    .button {
       width: 79px;
       height: 40px;
-      background-color: #fff;
-      border: 1px solid #727a90;
       border-radius: 10px;
       cursor: pointer;
       transition: background-color 0.3s;
+    }
+
+    .cancel {
+      @extend .button;
+      margin-right: 10px;
+      background-color: #fff;
+      border: 1px solid #727a90;
       color: #727a90;
     }
 
     .delete {
-      width: 79px;
-      height: 40px;
+      @extend .button;
       background-color: red;
       color: white;
       border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s;
     }
 }
 
-.cardContainer {
-  background-color: $primaryColor;
-  padding: 10px 12px;
-  border-radius: $childRadius;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.cardContainer, .staffCardContainer {
+    padding: 10px 12px;
+    border-radius: $childRadius;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 
-  h3 {
-    font-weight: bold;
-    font-size: 20px;
-  }
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+}
+
+.staffCardContainer {
+  height: 120px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.primaryCardContainer {
+    background-color: $primaryColor;
+    color: black;
+}
+
+.secondaryCardContainer {
+    background-color: #27ae60;
+    color: white;
 }
