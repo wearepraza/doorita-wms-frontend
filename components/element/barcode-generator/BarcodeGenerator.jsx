@@ -1,26 +1,22 @@
-// components
-import React, { useEffect, useRef } from 'react'
-import JsBarcode from 'jsbarcode'
+'use client'
 
-const BarcodeGenerator = ({ text }) => {
+import React, { useRef, useEffect } from 'react';
+import JsBarcode from 'jsbarcode';
+
+const BarcodeGenerator = ({ productNumber }) => {
   const barcodeRef = useRef(null);
 
   useEffect(() => {
-    if (barcodeRef.current) {
-      JsBarcode(barcodeRef.current, text, {
-        format: "CODE128",
+    if (productNumber) {
+      JsBarcode(barcodeRef.current, productNumber, {
+        format: 'CODE128',
         displayValue: true,
-        fontSize: 18,
-        height: 100,
       });
     }
-  }, [text]);
+  }, [productNumber]);
 
-  return (
-    <div>
-      <svg ref={barcodeRef} />
-    </div>
-  );
+  return <svg ref={barcodeRef} />;
 };
 
 export default BarcodeGenerator;
+``

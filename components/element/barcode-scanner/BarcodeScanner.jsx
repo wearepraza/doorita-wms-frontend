@@ -1,31 +1,30 @@
-// components
+'use client'
+
 import React, { useState } from 'react';
-import dynamic from 'next/dynamic';
+import BarcodeReader from 'react-barcode-reader';
 
-const BarcodeScannerComponent = dynamic(() => import("react-qr-barcode-scanner"), { ssr: false });
-
-const BarcodeScanner = ({ onScan }) => {
-  const [error, setError] = useState(null);
+const BarcodeScanner = ({ onProductScanned }) => {
+  const [scannedProduct, setScannedProduct] = useState(null);
 
   const handleScan = (data) => {
-    if (data) {
-      onScan(data);  
-    }
+    setScannedProduct(data);
+    onProductScanned(data);
   };
 
   const handleError = (err) => {
-    setError(err);
+    console.error(err);
   };
 
   return (
     <div>
-      {error && <p>Error: {error.message}</p>}
-      <BarcodeScannerComponent
-        onUpdate={(err, result) => {
-          if (result) handleScan(result.text);
-          else if (err) handleError(err);
-        }}
-      />
+      <BarcodeReader onScan={handleScan} onError={handleError} />
+      {scannedProduct && (
+        <div>
+          <p>Scanned Product Number: {scannedProduct}</p>
+          <button onClick={() => onProductScanned('entry')}>Product Entry</button>
+          <button onClick={() => onProductScanned('departure')}>Product Departure</button>
+        </div>
+      )}
     </div>
   );
 };
