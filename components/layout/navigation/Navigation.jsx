@@ -15,7 +15,7 @@ export default function Navigation() {
                     </Link>
                 </li>
                 <li>
-                    <Link href='#'>
+                    <Link href='/dashboard/admin'>
                         <LuHome size={24} />
                     </Link>
                 </li>
@@ -25,12 +25,12 @@ export default function Navigation() {
                     </Link>
                 </li>
                 <li>
-                    <Link href='#'>
+                    <Link href='/dashboard/admin/products'>
                         <LuArchive size={24} />
                     </Link>
                 </li>
                 <li>
-                    <Link href='#'>
+                    <Link href='/dashboard/admin/logs'>
                         <LuLayoutList size={24} />
                     </Link>
                 </li>
