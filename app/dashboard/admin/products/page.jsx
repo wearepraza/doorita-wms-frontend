@@ -14,6 +14,7 @@ import ModalCp from '@/components/element/modal/ModalCp';
 import { LuX } from "react-icons/lu";
 import SelectBox from '@/components/element/select-box/SelectBox';
 import { LuTrash2, LuLoader2 } from "react-icons/lu";
+import BarcodeGenerator from '@/components/element/barcode-generator/BarcodeGenerator';
 
 export default function Dashboard () {
     const [products, setProducts] = useState([]);
@@ -21,6 +22,7 @@ export default function Dashboard () {
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState("");
     const [name, setName] = useState("");
+    const [barcode, setBarcode] = useState("");
     const [productId, setProductId] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -75,7 +77,10 @@ export default function Dashboard () {
               </button>
             </div>
           </div>
-        ) : (
+        ) 
+        : selectedItem.value === "بارکد" ? (
+            <BarcodeGenerator productNumber={barcode} />
+        ): (
           <div>
             <h1>هیچ موردی انتخاب نشده</h1>
             <p>لطفاً یک مورد انتخاب کنید.</p>
@@ -84,6 +89,7 @@ export default function Dashboard () {
 
     const dropdownOptions = [
         { value: "ویرایش", name: "ویرایش" },
+        { value: "بارکد", name: "ایجاد بارکد" }
         // { value: "حذف", name: "حذف" }
     ];
     
@@ -159,7 +165,7 @@ export default function Dashboard () {
                         columns={columns} 
                         data={products} 
                         dropdownOptions={dropdownOptions} 
-                        onDropDataChange={(item, option) => {setSelectedItem(option); setName(item.name); setProductId(item.id)}}
+                        onDropDataChange={(item, option) => {setSelectedItem(option); setName(item.name); setProductId(item.id); setBarcode(item.barcode)}}
                         modalContent={modalContent}
                         isOpen={isModalOpen}
                         onClose={handleCloseModal}

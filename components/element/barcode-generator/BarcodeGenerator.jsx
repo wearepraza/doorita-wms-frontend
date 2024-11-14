@@ -19,4 +19,3 @@ const BarcodeGenerator = ({ productNumber }) => {
 };
 
 export default BarcodeGenerator;
-``
