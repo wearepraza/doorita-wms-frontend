@@ -1,12 +1,8 @@
-// imports
-import BarcodeGenerator from "@/components/element/barcode-generator/BarcodeGenerator"
-import BarcodeScanner from "@/components/element/barcode-scanner/BarcodeScanner"
+'use client'
 
-export default function test() {
-    return (
-        <div>
-            <BarcodeGenerator productNumber={555555555} />
-            <BarcodeScanner onProductScanned={(action) => console.log(`Product action: ${action}`)} />
-        </div>
-    )
+import { BarcodeScanner } from 'react-barcode-scanner'
+import "react-barcode-scanner/polyfill"
+
+export default function Test() {
+    return <BarcodeScanner />
 }
