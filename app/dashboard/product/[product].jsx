@@ -43,6 +43,9 @@ export default function Dashboard () {
     }
 
     return (
-        <div></div>
+        <div>
+            <button>ورودی</button>
+            <button>خروجی</button>
+        </div>
     )
 }
