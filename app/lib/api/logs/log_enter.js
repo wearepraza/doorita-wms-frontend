@@ -2,10 +2,10 @@ import axios from 'axios';
 import { BASE_URL } from '../config.js';
 import Cookies from 'js-cookie';
 
-export async function get_products_list() {
+export async function log_enter(barcode) {
   try {
-    return await axios.post(`${BASE_URL}product/list`, {
-      
+    return await axios.post(`${BASE_URL}log/enter`, {
+      barcode
     },
     {
       headers: {
