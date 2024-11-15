@@ -9,7 +9,7 @@ const BarcodeScanner = () => {
     
     const handleDetected = (result) => {
         const code = result.codeResult.code; 
-        router.push(`/dashboard/product/${code}`); 
+        router.push(`/dashboard/${code}`); 
     };
 
     return (
