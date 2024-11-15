@@ -51,7 +51,7 @@ export default function Dashboard() {
 
     return (
         <div className={styles.dashboard}>
-            <h1>Manage Product: {product_id}</h1>
+            <h1>مدیریت محصول: {product_id}</h1>
             <div className={styles.buttonContainer}>
                 <button 
                     onClick={enterProduct} 
