@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { BASE_URL } from '../config.js';
+import Cookies from 'js-cookie';
 
 export async function create_user(name, username, password, role) {
   try {
@@ -8,6 +9,11 @@ export async function create_user(name, username, password, role) {
       username,
       password,
       role
+    },
+    {
+      headers: {
+        Authorization: Cookies.get("authToken"),
+      },
     })
     .then(response => {
       return response.data;

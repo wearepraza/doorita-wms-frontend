@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { BASE_URL } from '../config.js';
+import Cookies from 'js-cookie';
 
 export async function store_product(name, id = null) {
   let dataParams = { name };
@@ -9,7 +10,12 @@ export async function store_product(name, id = null) {
   }
 
   try {
-    return await axios.post(`${BASE_URL}product/store`, dataParams)
+    return await axios.post(`${BASE_URL}product/store`, dataParams,
+      {
+        headers: {
+          Authorization: Cookies.get("authToken"),
+        },
+      })
       .then(response => {
         return response.data;
       })
