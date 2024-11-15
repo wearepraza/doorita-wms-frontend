@@ -1,0 +1,45 @@
+.dashboard {
+    text-align: center;
+    margin-top: 2rem;
+    font-family: Arial, sans-serif;
+}   
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.enterButton {
+    background-color: #4caf50;
+    color: white;
+}
+
+.exitButton {
+    background-color: #f44336;
+    color: white;
+}
+
+.button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.button:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.button:active:not(:disabled) {
+    transform: scale(0.98);
+}
