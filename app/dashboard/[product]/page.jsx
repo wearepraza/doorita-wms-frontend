@@ -19,13 +19,13 @@ export default function Dashboard() {
         try {
             let response = await log_enter(product_id); // Call the API
             if (response.status === 200) {
-                alert("Product quantity increased successfully!");
+                alert("موجودی محصول با موفقیت اضافه شد!");
             } else {
                 alert(`Error: ${response.message}`);
             }
         } catch (e) {
             console.error(e.message);
-            alert("An error occurred while increasing stock.");
+            alert("مشکلی در انجام فرایند رخ داد.");
         } finally {
             setLoading(false); // Reset loading state
         }
@@ -37,13 +37,13 @@ export default function Dashboard() {
         try {
             let response = await log_exit(product_id); // Call the API
             if (response.status === 200) {
-                alert("Product quantity decreased successfully!");
+                alert("موجودی محصول با موفقیت کم شد.");
             } else {
                 alert(`Error: ${response.message}`);
             }
         } catch (e) {
             console.error(e.message);
-            alert("An error occurred while decreasing stock.");
+            alert("مشکلی در انجام فرایند رخ داد.");
         } finally {
             setLoading(false); // Reset loading state
         }
@@ -57,13 +57,13 @@ export default function Dashboard() {
                     onClick={enterProduct} 
                     disabled={loading} 
                     className={`${styles.button} ${styles.enterButton}`}>
-                    {loading ? "Processing..." : "Increase Stock"}
+                    {loading ? "در حال انجام" : "افزایش موجودی"}
                 </button>
                 <button 
                     onClick={exitProduct} 
                     disabled={loading} 
                     className={`${styles.button} ${styles.exitButton}`}>
-                    {loading ? "Processing..." : "Decrease Stock"}
+                    {loading ? "در حال انجام" : "کاهش موجودی"}
                 </button>
             </div>
         </div>
