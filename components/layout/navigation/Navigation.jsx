@@ -20,7 +20,7 @@ export default function Navigation() {
                     </Link>
                 </li>
                 <li className={styles.scanlink}>
-                    <Link href='#'>
+                    <Link href='/dashboard/scanner'>
                         <LuScan size={28} />
                     </Link>
                 </li>
