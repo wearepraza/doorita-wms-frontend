@@ -2,10 +2,10 @@ import axios from 'axios';
 import { BASE_URL } from '../config.js';
 import Cookies from 'js-cookie';
 
-export async function delete_user(id) {
+export async function delete_product(id, status) {
   try {
-    return await axios.post(`${BASE_URL}user/delete`, {
-      id
+    return await axios.post(`${BASE_URL}product/status`, {
+      id, status
     },
     {
       headers: {

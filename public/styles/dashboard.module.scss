@@ -78,3 +78,20 @@
     background-color: #27ae60;
     color: white;
 }
+
+.selectRow {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  label {
+      text-align: right; // Removed `!important`
+  }
+
+  select {
+      min-width: 280px;
+      border: 1px solid #ddd;
+      border-radius: $childRadius;
+      padding: 8px 0;
+  }
+}

@@ -2,8 +2,8 @@ import axios from 'axios';
 import { BASE_URL } from '../config.js';
 import Cookies from 'js-cookie';
 
-export async function store_product(name, id = null) {
-  let dataParams = { name };
+export async function store_product(name, category, id = null) {
+  let dataParams = { name, category };
 
   if (id !== null) {
     dataParams.id = id;
