@@ -1,6 +1,7 @@
 'use client'
 
-import styles from '../../public/styles/login.module.scss'
+import styles from '@/public/styles/login.module.scss'
+
 import Image from 'next/image'
 import { useState } from 'react';
 import logo from '@/public/assets/images/logo.svg'
