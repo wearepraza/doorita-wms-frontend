@@ -10,6 +10,7 @@ import { get_users_list } from '@/app/lib/api/users/get_list';
 import { create_user } from '@/app/lib/api/users/create_user';
 import { delete_user } from '@/app/lib/api/users/delete_user';
 import { update_user } from '@/app/lib/api/users/update_user';
+import { update_pass } from '@/app/lib/api/users/update_password';
 import ModalCp from '@/components/element/modal/ModalCp';
 import { LuX } from "react-icons/lu";
 import SelectBox from '@/components/element/select-box/SelectBox';
@@ -48,6 +49,19 @@ export default function Dashboard () {
                     />
                 </div>
 
+                <div className={styles.inputRow}>
+                    <SelectBox 
+                        label='نقش کاربری' 
+                        options={[
+                            {label: 'انباردار', value: 1},
+                            {label: 'ادمین', value: 2}
+                        ]} 
+                        value={role}
+                        onChange={(e) => {setRole(e.target.value);}}
+                        className={'w-full'}
+                    />
+                </div>
+
                 <button onClick={updateUser} className="btn primary-btn">
                     ویرایش کاربر
                 </button>
@@ -78,7 +92,32 @@ export default function Dashboard () {
               </button>
             </div>
           </div>
-        ) : (
+        ) : selectedItem.value === "تغییر رمزعبور" ? (
+            <div className={styles.modalContent}>
+                <h2 className={styles.modalTitle}>تغییر رمزعبور </h2>
+                <div className="flex flex-col gap-y-4 mt-6">
+
+                <div className={styles.inputRow}>
+                    <label htmlFor="password">رمزعبور</label>
+                    <input 
+                        type="text" 
+                        id="password" 
+                        placeholder='رمزعبور را وارد کنید'
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
+
+                <button onClick={async () => {
+                    update_pass(userId, password);
+                    setPassword("")
+                    closeModal()
+                }} className="btn primary-btn">
+                    ویرایش رمزعبور
+                </button>
+
+                </div>
+            </div>
+          ) : (
           <div>
             <h1>هیچ موردی انتخاب نشده</h1>
             <p>لطفاً یک مورد انتخاب کنید.</p>
@@ -87,6 +126,7 @@ export default function Dashboard () {
 
     const dropdownOptions = [
         { value: "ویرایش", name: "ویرایش" },
+        { value: "تغییر رمزعبور", name: "تغییر رمزعبور" },
         { value: "حذف", name: "حذف" }
     ];
     
@@ -132,7 +172,7 @@ export default function Dashboard () {
 
     const updateUser = async () => {
         try {
-            let response = await update_user(name, userId)
+            let response = await update_user(name, role, userId)
             if (response.status === 200) {
                 setName("")
                 setPassword("")
@@ -167,7 +207,7 @@ export default function Dashboard () {
                         columns={columns} 
                         data={users} 
                         dropdownOptions={dropdownOptions} 
-                        onDropDataChange={(item, option) => {setSelectedItem(option); setName(item.name); setUserId(item.id)}}
+                        onDropDataChange={(item, option) => {setSelectedItem(option); setName(item.name); setUserId(item.id), setRole(1)}}
                         modalContent={modalContent}
                         isOpen={isModalOpen}
                         onClose={handleCloseModal}

@@ -2,12 +2,11 @@ import axios from 'axios';
 import { BASE_URL } from '../config.js';
 import Cookies from 'js-cookie';
 
-export async function update_user(name, role, id) {
+export async function update_pass(id, password) {
   try {
-    return await axios.post(`${BASE_URL}user/update`, {
-      name,
+    return await axios.post(`${BASE_URL}user/pass-update`, {
       id,
-      role
+      password
     },
     {
       headers: {
