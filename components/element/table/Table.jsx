@@ -125,14 +125,6 @@ const Table = ({
       <table id="productTable">
         <thead>
           <tr>
-            <th>
-              <input
-                type="checkbox"
-                aria-label="Select all"
-                checked={selectAll}
-                onChange={handleSelectAllChange}
-              />
-            </th>
             {columns.map((col, index) => (
               <th key={index}>{col.header}</th>
             ))}
@@ -141,14 +133,6 @@ const Table = ({
         <tbody>
           {paginatedData.map((item) => (
             <tr key={item.id}>
-              <td>
-                <input
-                  type="checkbox"
-                  aria-label={`Select row ${item.id}`}
-                  checked={isChecked(item.id)}
-                  onChange={() => handleCheckboxChange(item.id)}
-                />
-              </td>
               {columns.map((col, colIndex) => (
                 <td key={colIndex}>
                   {col.key === "actions" ? (

@@ -10,13 +10,15 @@ export default function Navigation() {
         <nav className={`${styles.navigation} shadow`}>
             <ul>
                 <li>
-                    <Link href='/dashboard/admin/users'>
+                    <Link href='/dashboard/admin/users' className='flex flex-col items-center gap-y-1'>
                         <LuUser size={24} />
+                        <h5>کاربران</h5>
                     </Link>
                 </li>
                 <li>
-                    <Link href='/dashboard/admin'>
+                    <Link href='/dashboard/admin' className='flex flex-col items-center gap-y-1'>
                         <LuHome size={24} />
+                        <h5>داشبورد</h5>
                     </Link>
                 </li>
                 <li className={styles.scanlink}>
@@ -25,13 +27,15 @@ export default function Navigation() {
                     </Link>
                 </li>
                 <li>
-                    <Link href='/dashboard/admin/products'>
+                    <Link href='/dashboard/admin/products' className='flex flex-col items-center gap-y-1'>
                         <LuArchive size={24} />
+                        <h5>محصولات</h5>
                     </Link>
                 </li>
                 <li>
-                    <Link href='/dashboard/admin/logs'>
+                    <Link href='/dashboard/admin/logs' className='flex flex-col items-center gap-y-1'>
                         <LuLayoutList size={24} />
+                        <h5>آمار</h5>
                     </Link>
                 </li>
             </ul>
