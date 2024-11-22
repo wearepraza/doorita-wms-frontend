@@ -1,5 +1,6 @@
 'use client'
 
+import '@/public/styles/globals.scss'
 import styles from '@/public/styles/login.module.scss'
 
 import Image from 'next/image'

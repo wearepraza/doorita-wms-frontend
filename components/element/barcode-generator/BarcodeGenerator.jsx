@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
 import React, { useRef, useEffect } from 'react';
 import JsBarcode from 'jsbarcode';
 
-const BarcodeGenerator = ({ productNumber }) => {
+const BarcodeGenerator = ({ productNumber, id = 'barcode-svg' }) => {
   const barcodeRef = useRef(null);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const BarcodeGenerator = ({ productNumber }) => {
     }
   }, [productNumber]);
 
-  return <svg ref={barcodeRef} />;
+  return <svg ref={barcodeRef} id={id} />;
 };
 
 export default BarcodeGenerator;
