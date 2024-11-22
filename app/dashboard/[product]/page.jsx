@@ -13,6 +13,8 @@ export default function Dashboard() {
     const { product: product_id } = useParams(); // Get the product ID from the route
     const [loading, setLoading] = useState(false); // State to handle loading
 
+    const router = useRouter();
+
     // Function to handle adding to the stock
     const enterProduct = async () => {
         setLoading(true);
@@ -20,6 +22,7 @@ export default function Dashboard() {
             let response = await log_enter(product_id); // Call the API
             if (response.status === 200) {
                 alert("موجودی محصول با موفقیت اضافه شد!");
+                router.push("/dashboard/scanner")
             } else {
                 alert(`Error: ${response.message}`);
             }
@@ -38,6 +41,7 @@ export default function Dashboard() {
             let response = await log_exit(product_id); // Call the API
             if (response.status === 200) {
                 alert("موجودی محصول با موفقیت کم شد.");
+                router.push("/dashboard/scanner")
             } else {
                 alert(`Error: ${response.message}`);
             }
