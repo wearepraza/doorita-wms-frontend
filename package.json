@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ericblade/quagga2": "^1.8.4",
     "@undecaf/barcode-detector-polyfill": "^0.9.21",
     "axios": "^1.7.7",
     "chart.js": "^4.4.6",
