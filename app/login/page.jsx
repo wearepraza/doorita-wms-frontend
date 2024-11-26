@@ -24,6 +24,7 @@ export default function Login() {
             const token = response.token;
             Cookies.set('authToken', token, { expires: 30 });
             Cookies.set('role', response.role, { expires: 30 });
+            Cookies.set('name', response.name, {expires: 30 })
             
             if (response.role === 1) {
                 router.push('/dashboard/staff');

@@ -5,6 +5,7 @@ import styles from '@/public/styles/dashboard.module.scss'
 import { LuArrowBigRightDash, LuArrowBigLeftDash } from "react-icons/lu";
 import { admin_index } from '@/app/lib/api/users/admin_index';
 import React, { useState, useEffect, useRef } from "react";
+import Cookies from 'js-cookie';
 
 
 export default function Dashboard () {
@@ -35,7 +36,7 @@ export default function Dashboard () {
 
     return (
         <div className="flex flex-col gap-y-10 px-2 md:px-0">
-            <h1 className='text-center font-bold'>به پنل دریتا خوش آمدید</h1>
+            <h1 className='text-center font-bold'> <u>{Cookies.get('name')}</u> به پنل دریتا خوش آمدید </h1>
             <div className='grid grid-flow-row-dense grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6'>
                 <div className={styles.cardContainer + " flex justify-between items-center"}>
                     <div className='flex flex-col gap-y-2'>

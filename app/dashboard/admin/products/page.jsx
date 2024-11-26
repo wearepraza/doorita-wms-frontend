@@ -22,11 +22,15 @@ export default function Dashboard() {
     const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState("");
     const [name, setName] = useState("");
+    const [capacity, setCapacity] = useState("");
     const [status, setStatus] = useState("1");
     const [category, setCategory] = useState("درب آسانسور");
     const [barcode, setBarcode] = useState("");
     const [productId, setProductId] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [searchName, setSearchName] = useState("");
+    const [searchCategory, setSearchCategory] = useState("");
+
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
@@ -53,7 +57,7 @@ export default function Dashboard() {
         URL.revokeObjectURL(url);
     };
 
-    const modalContent = () =>
+    const modalContent = (closeModal) =>
         selectedItem.value === "ویرایش" ? (
             <div className={styles.modalContent}>
                 <h2 className={styles.modalTitle}>ویرایش</h2>
@@ -66,6 +70,16 @@ export default function Dashboard() {
                             placeholder="نام محصول را وارد کنید"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
+                        />
+                    </div>
+                    <div className={styles.inputRow}>
+                        <label htmlFor="capacity">موجودی محصول</label>
+                        <input 
+                            type="text" 
+                            id="capacity" 
+                            placeholder="موجودی محصول را وارد کنید"
+                            value={capacity}
+                            onChange={(e) => setCapacity(e.target.value)}
                         />
                     </div>
                     <div className={styles.selectRow}>
@@ -82,7 +96,7 @@ export default function Dashboard() {
                             <option>درب ضد سرقت آپارتمانی</option>
                         </select>
                     </div>
-                    <button onClick={updateProduct} className="btn primary-btn">
+                    <button onClick={async () => {await updateProduct(); closeModal()}} className="btn primary-btn">
                         ویرایش محصول
                     </button>
                 </div>
@@ -95,6 +109,32 @@ export default function Dashboard() {
                     دانلود بارکد
                 </button>
             </div>
+        ) : selectedItem.value === "حذف" ? (
+            <div className={styles.modalContent}>
+                <h2 className={styles.modalTitle}>تغییر وضعیت</h2>
+                <div className="flex flex-col gap-y-4 mt-6">
+                    <div className={styles.selectRow}>
+                    <SelectBox 
+                        label='وضعیت محصول' 
+                        options={[
+                            {label: 'فعال', value: 1},
+                            {label: 'غیرفعال', value: 0}
+                        ]} 
+                        value={status}
+                        onChange={(e) => {setStatus(e.target.value);}}
+                        className={'w-full'}
+                    />
+                    </div>
+                    <button onClick={async () => {
+                        await delete_product(productId, status)
+                        await getProducts()
+                        closeModal()
+                    }
+                    } className="btn primary-btn">
+                        تغییر وضعیت
+                    </button>
+                </div>
+            </div>
         ) : (
             <div>
                 <h1>هیچ موردی انتخاب نشده</h1>
@@ -104,7 +144,7 @@ export default function Dashboard() {
 
     const getProducts = async () => {
         try {
-            let response = await get_products_list();
+            let response = await get_products_list(searchName, searchCategory);
             if (response.status === 200) {
                 setProducts(response.items);
             } else {
@@ -132,9 +172,10 @@ export default function Dashboard() {
 
     const updateProduct = async () => {
         try {
-            let response = await store_product(name, category, productId);
+            let response = await store_product(name, category, capacity, productId);
             if (response.status === 200) {
                 setName("");
+                setCapacity("")
                 handleCloseModal();
                 await getProducts();
             } else {
@@ -155,6 +196,30 @@ export default function Dashboard() {
                 <div>
                     <button onClick={() => setIsCreateModalOpen(true)} className="btn primary-btn">
                         ایجاد محصول
+                    </button>
+                </div>
+                <div className="flex flex-col gap-y-6">
+                    <div className={styles.inputRow}>
+                        <label htmlFor="name">نام محصول</label>
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="نام محصول را وارد کنید"
+                            onChange={(e) => setSearchName(e.target.value)}
+                        />
+                    </div>
+                    <div className={styles.selectRow}>
+                        <label htmlFor="category">دسته بندی محصول</label>
+                        <select name="category" id="category" className='w-full' onChange={(e) => setSearchCategory(e.target.value)}>
+                            <option value="">تمامی دسته ها</option>
+                            <option>درب لولایی آسانسور</option>
+                            <option>درب ضد حریق</option>
+                            <option>درب ضد سرقت حیاطی</option>
+                            <option>درب ضد سرقت آپارتمانی</option>
+                        </select>
+                    </div>
+                    <button onClick={getProducts} className="btn primary-btn">
+                        فیلتر محصولات
                     </button>
                 </div>
                 {products.length > 0 ? (
@@ -180,6 +245,7 @@ export default function Dashboard() {
                             setCategory(item.category);
                             setProductId(item.id);
                             setBarcode(item.barcode);
+                            setCapacity(item.capacity)
                         }}
                         modalContent={modalContent}
                         isOpen={isModalOpen}

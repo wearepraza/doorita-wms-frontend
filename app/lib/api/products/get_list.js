@@ -2,10 +2,11 @@ import axios from 'axios';
 import { BASE_URL } from '../config.js';
 import Cookies from 'js-cookie';
 
-export async function get_products_list() {
+export async function get_products_list(name = "", category = "") {
   try {
     return await axios.post(`${BASE_URL}product/list`, {
-      
+      name,
+      category
     },
     {
       headers: {
